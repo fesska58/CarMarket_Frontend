@@ -1,27 +1,19 @@
 <template>
-  <header>
-    <nav class="bg-gray-800 text-white p-4">
-      <div class="container mx-auto flex justify-between items-center">
-        <router-link to="/" class="text-xl font-bold">CarCatalog</router-link>
-        <div class="space-x-4">
-          <router-link to="/" class="hover:text-gray-300">Главная</router-link>
-          <router-link to="/cars" class="hover:text-gray-300">Каталог</router-link>
-          <router-link to="/calculator" class="hover:text-gray-300">Калькулятор</router-link>
-          <router-link to="/about" class="hover:text-gray-300">О нас</router-link>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <div class="app-layout min-h-screen flex flex-col">
+    <!-- Шапка сайта (может быть с контейнером, если хочешь) -->
+    <Header />
 
-  <main class="min-h-screen">
-    <router-view />
-  </main>
+    <!-- Основной контент (во всю ширину) -->
+    <main class="main-content flex-1 w-full">
+      <router-view />
+    </main>
 
-  <footer class="bg-gray-800 text-white text-center p-4">
-    &copy; {{ new Date().getFullYear() }} CarCatalog
-  </footer>
+    <!-- Подвал сайта (может быть с контейнером, если хочешь) -->
+    <Footer />
+  </div>
 </template>
 
 <script setup>
-// Ничего не нужно
+import Header from './components/HeaderMain.vue'
+import Footer from './components/FooterMain.vue' // пока пустой, создадим позже
 </script>

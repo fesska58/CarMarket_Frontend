@@ -1,0 +1,275 @@
+/* frontend/src/style.css */
+
+/* Подключение основных слоев Tailwind CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Дополнительные глобальные стили (опционально) */
+
+/* Убираем стандартные отступы у body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+    'Helvetica Neue', sans-serif;
+  /* Убедимся, что шрифт не "скачет" при загрузке */
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+  /* Добавим минимальную высоту для body */
+  min-height: 100vh;
+  /* Убираем прокрутку, если она не нужна */
+  overflow-x: hidden;
+}
+
+/* Стили для контейнера */
+.container {
+  width: 100%;
+  max-width: 1400px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.container_sections {
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* Стили для главной секции */
+main {
+  /* Основной контент не должен залезать под sticky header */
+  padding-top: 0;
+}
+
+/* Пример стилей для кнопок, если хочется переопределить Tailwind */
+.btn {
+  @apply inline-block px-6 py-3 rounded-lg font-medium text-center no-underline;
+}
+
+.btn-primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.btn-secondary {
+  @apply bg-gray-200 text-gray-800 hover:bg-gray-300;
+}
+
+/* Стили для карточек (можно использовать в CarCard.vue) */
+.car-card {
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.car-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Стили для формы (если нужно что-то глобальное) */
+input[type='text'],
+input[type='number'],
+input[type='tel'],
+textarea,
+select {
+  @apply w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+}
+
+/* Стили для заголовков */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply font-bold text-gray-900;
+}
+
+h1 {
+  @apply text-3xl md:text-4xl;
+}
+
+h2 {
+  @apply text-2xl md:text-3xl;
+}
+
+h3 {
+  @apply text-xl md:text-2xl;
+}
+
+/* Сброс стилей для ссылок */
+a {
+  @apply text-blue-600 hover:text-blue-800;
+  text-decoration: none;
+}
+
+/* Сброс стилей для списков */
+ul,
+ol {
+  @apply list-disc pl-5;
+}
+
+/* Сброс стилей для изображений */
+img {
+  @apply max-w-full h-auto;
+}
+
+/* Стили для пагинации (можно будет использовать в Pagination.vue) */
+.pagination {
+  @apply flex justify-center space-x-2 mt-6;
+}
+
+.pagination button {
+  @apply px-4 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100;
+}
+
+.pagination button.active {
+  @apply bg-blue-600 text-white;
+}
+
+/* Стили для мобильного меню (если будет реализовано) */
+.mobile-menu {
+  @apply absolute top-full left-0 w-full bg-white shadow-lg z-50 md:hidden;
+}
+
+/* Стили для карусели/галереи фото (если будет реализовано) */
+.image-gallery {
+  @apply flex space-x-2 overflow-x-auto pb-2;
+}
+
+.image-gallery img {
+  @apply w-24 h-24 object-cover rounded cursor-pointer;
+}
+
+/* Стили для калькулятора (если нужно что-то глобальное) */
+.calculator-form {
+  @apply bg-white p-6 rounded-lg shadow-sm;
+}
+
+/* Стили для результатов калькулятора */
+.calculation-result {
+  @apply mt-6 p-4 bg-gray-100 rounded-lg;
+}
+
+/* Стили для фильтров (если будет FilterPanel.vue) */
+.filter-panel {
+  @apply bg-gray-50 p-4 rounded-lg shadow-sm mb-6;
+}
+
+/* Стили для футера */
+footer {
+  @apply bg-gray-800 text-white py-8;
+}
+
+/* Стили для хедера */
+header {
+  @apply bg-white shadow-md sticky top-0 z-50;
+}
+
+/* Стили для основного контента */
+main {
+  @apply min-h-screen;
+}
+
+/* Пример стиля для адаптивности
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .grid-cols-3,
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    @apply text-2xl;
+  }
+
+  h2 {
+    @apply text-xl;
+  }
+}
+  */
+
+/* Пример стиля для состояния загрузки */
+.loading {
+  @apply text-center py-8;
+}
+
+/* Пример стиля для пустого состояния */
+.empty-state {
+  @apply text-center py-8 text-gray-500;
+}
+
+/* Пример стиля для ошибки */
+.error-message {
+  @apply text-red-600 text-center py-4;
+}
+
+/* Стили для кнопки "Оставить заявку" в хедере */
+header .request-button {
+  @apply bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg transition;
+}
+
+/* Стили для контактов в хедере */
+header .contact-info a {
+  @apply text-gray-600 hover:text-gray-900;
+}
+
+/* Стили для соцсетей в хедере */
+header .social-links a {
+  @apply hover:text-gray-900;
+}
+
+/* Стили для навигации в хедере */
+header nav a {
+  @apply text-gray-700 hover:text-blue-600 font-medium;
+}
+
+/* Стили для основного баннера на главной */
+.home .hero-section {
+  @apply bg-gradient-to-r from-blue-50 to-indigo-50 py-12;
+}
+
+/* Стили для преимуществ */
+.home .advantages-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8;
+}
+
+/* Стили для схемы покупки */
+.home .scheme-grid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
+}
+
+/* Стили для формы заявки */
+.home .request-form {
+  @apply bg-gray-50 p-6 rounded-lg shadow-sm;
+}
+
+/* Стили для карточки преимущества */
+.advantage-card {
+  @apply bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition;
+}
+
+/* Стили для шага схемы */
+.scheme-step {
+  @apply bg-white p-6 rounded-lg shadow-sm text-center;
+}
+
+/* Стили для заголовка шага */
+.scheme-step .title {
+  @apply text-blue-600 font-bold text-lg mb-2;
+}
+
+/* Стили для описания шага */
+.scheme-step .description {
+  @apply text-gray-600;
+}

@@ -1,37 +1,46 @@
 <template>
-  <div class="car-card border rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+  <div
+    class="car-card bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
+  >
     <!-- Фото -->
-    <img
-      :src="car.imageUrls[0]"
-      :alt="`${car.brandName} ${car.modelName}`"
-      class="w-full h-48 object-cover"
-    />
+    <div class="relative">
+      <img
+        :src="car.imageUrls && car.imageUrls[0] ? car.imageUrls[0] : 'https://placehold.co/300x200'"
+        :alt="`${car.brandName} ${car.modelName}`"
+        class="w-full h-48 object-cover"
+      />
+      <!-- Цена -->
+      <div class="absolute top-2 right-2 bg-red-600 text-white text-sm font-bold px-2 py-1 rounded">
+        {{ formatCurrency(car.priceAuction) }} {{ getCurrencySymbol(car.countryCode) }}
+      </div>
+    </div>
 
     <!-- Информация -->
     <div class="p-4">
-      <h3 class="font-bold text-lg mb-2">{{ car.brandName }} {{ car.modelName }}</h3>
-
-      <div class="mb-2">
-        <p class="text-gray-600">Год: {{ car.year }}</p>
-        <p class="text-gray-600">Пробег: {{ car.mileageKm }} км</p>
-        <p class="text-gray-600">Двигатель: {{ car.engineVolumeL }} л</p>
-        <p class="text-gray-600">Коробка: {{ car.transmission }}</p>
-        <p class="text-gray-600">Страна: {{ car.countryName }}</p>
-      </div>
-
-      <!-- Цена -->
-      <p class="text-xl font-bold text-red-600 mb-3">
-        {{ car.priceAuction.toLocaleString() }}
-        {{ getCurrencySymbol(car.countryCode) }}
+      <h3 class="font-bold text-lg mb-1">{{ car.brandName }} {{ car.modelName }}</h3>
+      <p class="text-gray-600 text-sm mb-1">Год: {{ car.year }}</p>
+      <p class="text-gray-600 text-sm mb-1">Пробег: {{ formatNumber(car.mileageKm) }} км</p>
+      <p class="text-gray-600 text-sm mb-1">
+        Двигатель: {{ car.engineVolumeL }} л, {{ car.engineType }}
       </p>
+      <p class="text-gray-600 text-sm mb-1">Коробка: {{ car.transmission }}</p>
+      <p class="text-gray-600 text-sm mb-2">Страна: {{ car.countryName }}</p>
 
-      <!-- Кнопка -->
-      <button
-        class="w-full bg-green-500 hover:bg-green-600 text-white py-2 rounded"
-        @click="goToCalculator"
-      >
-        Рассчитать стоимость
-      </button>
+      <!-- Кнопки -->
+      <div class="flex flex-col gap-2">
+        <button
+          @click="goToCalculator"
+          class="w-full bg-green-600 hover:bg-green-700 text-white font-medium py-2 rounded transition"
+        >
+          Рассчитать стоимость
+        </button>
+        <button
+          @click="goToCalculatorWithCarData"
+          class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 rounded transition"
+        >
+          Рассчитать по карточке
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -39,7 +48,6 @@
 <script setup>
 import { useRouter } from 'vue-router'
 
-// eslint-disable-next-line no-unused-vars
 const props = defineProps({
   car: {
     type: Object,
@@ -47,15 +55,29 @@ const props = defineProps({
   },
 })
 
-// Возвращает символ валюты по коду страны
+const router = useRouter()
+
+// Локальные функции (не методы компонента)
+const formatCurrency = (value) => {
+  if (typeof value !== 'number') return value
+  return new Intl.NumberFormat('ru-RU').format(value)
+}
+
+const formatNumber = (value) => {
+  if (typeof value !== 'number') return value
+  return new Intl.NumberFormat('ru-RU').format(value)
+}
+
 const getCurrencySymbol = (code) => {
   return code === 'JP' ? 'JPY' : code === 'KR' ? 'KRW' : 'CNY'
 }
 
-const router = useRouter()
-
 const goToCalculator = () => {
-  // TODO: можно передать данные машины в калькулятор
+  router.push('/calculator')
+}
+
+const goToCalculatorWithCarData = () => {
+  // TODO: передать данные машины в калькулятор
   router.push('/calculator')
 }
 </script>

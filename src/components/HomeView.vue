@@ -1,65 +1,90 @@
-<!-- frontend/src/views/AboutView.vue -->
-
 <template>
-  <div class="about-page w-full">
-    <div class="container mx-auto px-4 py-8">
-      <!-- Заголовок -->
-      <h1 class="text-3xl md:text-4xl font-bold mb-6 text-gray-800">О нас</h1>
+  <div class="home-page w-full">
+    <!-- Приветственный блок (во всю ширину) -->
+    <section class="hero-section bg-gradient-to-r from-blue-50 to-indigo-50 py-16">
+      <!-- Убрали container mx-auto -->
+      <div class="px-4 text-center">
+        <h1 class="text-3xl md:text-4xl font-bold mb-4 text-gray-800">
+          Покупка и доставка <br />авто из Японии, Кореи и Китая
+        </h1>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto mb-8">
+          Вы – первый собственник автомобиля в России. Экономия по сравнению со вторичным рынком.
+          Машины проходят полную таможенную очистку.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center gap-4">
+          <router-link
+            to="/cars"
+            class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition shadow-md"
+          >
+            Перейти к каталогу
+          </router-link>
+          <button
+            class="bg-white hover:bg-gray-100 text-blue-600 border border-blue-600 font-bold py-3 px-6 rounded-lg transition shadow-md"
+          >
+            Оставить заявку
+          </button>
+        </div>
+      </div>
+    </section>
 
-      <!-- Приветственный текст -->
-      <section class="mb-12 bg-white p-6 rounded-lg shadow-sm">
-        <h2 class="text-2xl font-bold mb-4 text-gray-800">
-          Покупка и доставка авто из Японии, Кореи и Китая
+    <!-- Преимущества (во всю ширину) -->
+    <section class="advantages-section py-16 bg-white">
+      <!-- Убрали container mx-auto -->
+      <div class="px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-800">
+          Преимущества работы с нами
         </h2>
-        <ul class="list-disc pl-6 space-y-2 text-gray-700">
-          <li>Вы – первый собственник автомобиля в России</li>
-          <li>Экономия по сравнению со вторичным рынком</li>
-          <li>Машины проходят полную таможенную очистку</li>
-        </ul>
-      </section>
-
-      <!-- Преимущества -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">Преимущества работы с нами</h2>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <div class="advantage-card bg-white p-6 rounded-lg shadow-sm">
-            <h3 class="text-lg font-bold mb-2 text-blue-600">Минимальная комиссия</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- Карточки преимуществ -->
+          <div
+            class="advantage-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div class="text-blue-600 text-xl font-bold mb-2">Минимальная комиссия</div>
             <p class="text-gray-600">Комиссия компании от 30 000 рублей</p>
           </div>
-          <div class="advantage-card bg-white p-6 rounded-lg shadow-sm">
-            <h3 class="text-lg font-bold mb-2 text-blue-600">Оплата на рассчетный счет</h3>
+          <div
+            class="advantage-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div class="text-blue-600 text-xl font-bold mb-2">Оплата на рассчетный счет</div>
             <p class="text-gray-600">Оплата в рублях на расчётный счёт нашей компании</p>
           </div>
-          <div class="advantage-card bg-white p-6 rounded-lg shadow-sm">
-            <h3 class="text-lg font-bold mb-2 text-blue-600">Работа строго по договору</h3>
+          <div
+            class="advantage-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div class="text-blue-600 text-xl font-bold mb-2">Работа строго по договору</div>
             <p class="text-gray-600">Автомобиль проходит полную таможенную очистку</p>
           </div>
-          <div class="advantage-card bg-white p-6 rounded-lg shadow-sm">
-            <h3 class="text-lg font-bold mb-2 text-blue-600">Доставка по всей России</h3>
+          <div
+            class="advantage-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div class="text-blue-600 text-xl font-bold mb-2">Доставка по всей России</div>
             <p class="text-gray-600">Автовозами или железно-дорожной сеткой</p>
           </div>
-          <div class="advantage-card bg-white p-6 rounded-lg shadow-sm">
-            <h3 class="text-lg font-bold mb-2 text-blue-600">Сохранность автомобиля</h3>
+          <div
+            class="advantage-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div class="text-blue-600 text-xl font-bold mb-2">Сохранность автомобиля</div>
             <p class="text-gray-600">Страховка автомобиля при транспортировке в Россию</p>
           </div>
-          <div class="advantage-card bg-white p-6 rounded-lg shadow-sm">
-            <h3 class="text-lg font-bold mb-2 text-blue-600">Дополнительные услуги</h3>
-            <p class="text-gray-600">
-              Можем взять на себя обслуживание и оформление вашего автомобиля
-            </p>
-            <ul class="list-disc pl-5 mt-2 text-gray-600">
-              <li>Поставим ваш автомобиль на учёт</li>
-              <li>Приобретем масла, фильтра, колеса</li>
-              <li>Обслужим авто, переобуем, установим сигнализацию</li>
-            </ul>
+          <div
+            class="advantage-card bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition"
+          >
+            <div class="text-blue-600 text-xl font-bold mb-2">Дополнительные услуги</div>
+            <p class="text-gray-600">Оформление, постановка на учёт, обслуживание</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Схема покупки -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">Схема покупки</h2>
+    <!-- Схема покупки (во всю ширину) -->
+    <section class="scheme-section py-16 bg-gray-50">
+      <!-- Убрали container mx-auto -->
+      <div class="px-4">
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-800">
+          Схема покупки
+        </h2>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <!-- Шаги -->
           <div class="scheme-step bg-white p-6 rounded-lg shadow-sm text-center">
             <div class="text-blue-600 font-bold text-lg mb-2">1. Выбор автомобиля</div>
             <p class="text-gray-600">
@@ -96,18 +121,22 @@
             <p class="text-gray-600">Отправим автомобиль в любую точку России.</p>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <!-- Форма заявки -->
-      <section class="mb-12">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">
+    <!-- Форма заявки (во всю ширину) -->
+    <section class="request-section py-16 bg-white">
+      <!-- Убрали container mx-auto -->
+      <div class="px-4 max-w-4xl mx-auto">
+        <!-- Оставим max-w и mx-auto только для формы -->
+        <h2 class="text-2xl md:text-3xl font-bold text-center mb-6 text-gray-800">
           Оставьте заявку на персональный подбор машины вашей мечты
         </h2>
-        <p class="text-gray-600 mb-6">
+        <p class="text-center text-gray-600 mb-8">
           Укажите бюджет и параметры интересующей вас машины, наши сотрудники подберут и отправят
-          лучшие предложения по вашему запросу. Вам останется только выбрать и заключить договор.
+          лучшие предложения по вашему запросу.
         </p>
-        <div class="bg-gray-50 p-6 rounded-lg shadow-sm">
+        <div class="request-form bg-gray-50 p-6 rounded-lg shadow-sm">
           <form class="space-y-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -147,8 +176,8 @@
             </button>
           </form>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   </div>
 </template>
 
